@@ -2,6 +2,7 @@ import { capitalize } from '@vue/shared'
 import type { Node, ObjectExpression, Statement } from '@babel/types'
 import { notNullish, partition, uniq } from '@antfu/utils'
 import { parserOptions } from '@vue/compiler-dom'
+import type MagicString from 'magic-string'
 import type { ParsedSFC, ScriptSetupTransformOptions } from '../types'
 import { applyMacros } from './macros'
 import { getIdentifierDeclarations } from './identifiers'
@@ -25,6 +26,7 @@ function isAsyncImport(node: Statement) {
 
 export function transformScriptSetup(
   sfc: ParsedSFC,
+  s: MagicString,
   options?: ScriptSetupTransformOptions,
 ) {
   const { scriptSetup, script, template } = sfc

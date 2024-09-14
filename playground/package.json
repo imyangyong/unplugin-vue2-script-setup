@@ -6,10 +6,10 @@
   },
   "dependencies": {
     "@vue/composition-api": "^1.7.1",
-    "vue": "^2.6.14"
+    "vue": "~2.6.14"
   },
   "devDependencies": {
-    "vite": "^4.4.8",
+    "vite": "^5.4.5",
     "vite-plugin-inspect": "^0.7.35",
     "vite-plugin-vue2": "^2.0.3",
     "vue-template-compiler": "~2.6.14"

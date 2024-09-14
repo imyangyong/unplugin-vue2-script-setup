@@ -44,7 +44,7 @@ async function transformVue(input: string, id: string, options: ResolvedOptions)
   if (options.reactivityTransform)
     transformSfcRefSugar(sfc, options)
 
-  const { code } = transformScriptSetup(sfc, options)
+  const { code } = transformScriptSetup(sfc, s, options)
 
   const attributes = {
     ...sfc.script.attrs,
@@ -60,16 +60,18 @@ async function transformVue(input: string, id: string, options: ResolvedOptions)
 
     s.remove(sfc.script.start, sfc.script.end)
     if (sfc.scriptSetup.start !== sfc.scriptSetup.end) {
-      s.overwrite(
-        sfc.scriptSetup.start,
-        sfc.scriptSetup.end,
-        block,
-      )
+      // s.overwrite(
+      //   sfc.scriptSetup.start,
+      //   sfc.scriptSetup.end,
+      //   block,
+      // )
     }
     else {
       s.prependLeft(0, `${block}\n`)
     }
   }
+  console.log('transform.ts (74)', s.toString())
+
   return {
     code: s.toString(),
     map: options.sourceMap
