@@ -1,5 +1,9 @@
-<script setup lang="ts">
-debugger
+<script lang="ts">
+export default {
+  setup() {
+    console.log('HelloWorld setup')
+  }
+}
 </script>
 
 <template>

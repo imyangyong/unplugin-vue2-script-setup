@@ -60,17 +60,16 @@ async function transformVue(input: string, id: string, options: ResolvedOptions)
 
     s.remove(sfc.script.start, sfc.script.end)
     if (sfc.scriptSetup.start !== sfc.scriptSetup.end) {
-      // s.overwrite(
-      //   sfc.scriptSetup.start,
-      //   sfc.scriptSetup.end,
-      //   block,
-      // )
+      s.overwrite(
+        sfc.scriptSetup.start,
+        sfc.scriptSetup.end,
+        block,
+      )
     }
     else {
       s.prependLeft(0, `${block}\n`)
     }
   }
-  console.log('transform.ts (74)', s.toString())
 
   return {
     code: s.toString(),
